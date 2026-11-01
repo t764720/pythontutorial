@@ -180,9 +180,10 @@
             overflow-x: auto;
             margin: 1.25rem 0;
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.8;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.05);
             position: relative;
+            white-space: pre;
         }
 
         .code-box::before {
@@ -412,10 +413,8 @@
                 <li>اختر <strong>IDLE (Python 3.9 64-bit)</strong>.</li>
                 <li>لإنشاء ملف برمجي جديد وكتابة الأوامر وحفظها، من قائمة <strong>File</strong> اختر <strong>New File</strong> (أو اضغط <code>Ctrl + N</code>).</li>
             </ul>
-            <div class="code-box">
-                <span class="comment"># مثال لطباعة رسالة ترحيبية</span><br>
-                <span class="keyword">print</span>(<span class="string">"مرحبا بك في بايثون"</span>)
-            </div>
+            <div class="code-box"><code><span class="comment"># مثال لطباعة رسالة ترحيبية</span>
+<span class="keyword">print</span>(<span class="string">"مرحبا بك في بايثون"</span>)</code></div>
         </section>
 
         <!-- القسم الثاني: المتغيرات وأنواعها -->
@@ -434,23 +433,19 @@
                 <li>حالة الحروف الإنجليزية مهمة جداً (حساسة لحالة الأحرف، مثال: <code>age</code> تختلف تماماً عن <code>Age</code>).</li>
             </ul>
 
-            <div class="code-box">
-                <span class="comment"># أمثلة على تعيين القيم للمتغيرات</span><br>
-                score = <span class="number">1200</span><br>
-                myName = <span class="string">"محمد"</span><br>
-                total = x + y<br>
-                <span class="keyword">print</span>(<span class="string">"اسمي:"</span>, myName)
-            </div>
+            <div class="code-box"><code><span class="comment"># أمثلة على تعيين القيم للمتغيرات</span>
+score = <span class="number">1200</span>
+myName = <span class="string">"محمد"</span>
+total = x + y
+<span class="keyword">print</span>(<span class="string">"اسمي:"</span>, myName)</code></div>
         </section>
 
         <!-- القسم الثالث: الثوابت -->
         <section>
             <h2><span class="section-num">3</span> الثوابت (Constants)</h2>
             <p>هي متغيرات ذات قيمة ثابتة لا تتغير أثناء تنفيذ البرنامج (مثل قيمة النسبة الثابتة <code>π</code> التي تساوي تقريباً 3.14). وعادة ما يتم استيرادها من مكتبات بايثون الجاهزة:</p>
-            <div class="code-box">
-                <span class="keyword">from</span> math <span class="keyword">import</span> pi<br>
-                <span class="keyword">print</span>(<span class="string">"قيمة باي:"</span>, pi)
-            </div>
+            <div class="code-box"><code><span class="keyword">from</span> math <span class="keyword">import</span> pi
+<span class="keyword">print</span>(<span class="string">"قيمة باي:"</span>, pi)</code></div>
         </section>
 
         <!-- القسم الرابع: الأنشطة التفاعلية -->
@@ -476,12 +471,10 @@
             <div class="activity-box">
                 <h3>💡 نشاط (2): تدريب على ناتج المقطع البرمجي</h3>
                 <p>تأمل المقطع البرمجي التالي بعناية:</p>
-                <div class="code-box">
-                    x = <span class="number">20</span><br>
-                    y = <span class="number">30</span><br>
-                    Total = x + y<br>
-                    <span class="keyword">print</span>(<span class="string">"مجموع x و y يساوي:"</span>, Total)
-                </div>
+                <div class="code-box"><code>x = <span class="number">20</span>
+y = <span class="number">30</span>
+Total = x + y
+<span class="keyword">print</span>(<span class="string">"مجموع x و y يساوي:"</span>, Total)</code></div>
                 <p>ما هو الناتج (أو الرقم) الذي سيظهر عند تنفيذ البرنامج؟</p>
                 <div class="input-group">
                     <input type="text" id="userAnswer" placeholder="اكتب الناتج هنا...">
