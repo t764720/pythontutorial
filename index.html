@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدرس الثاني: المتغيرات والثوابت في بايثون</title>
+    <style>
+        :root {
+            --primary-color: #2b6cb0;
+            --secondary-color: #3182ce;
+            --accent-color: #ed8936;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+            --code-bg: #1a202c;
+            --code-text: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+        }
+
+        /* Code blocks styling with LTR direction */
+        .code-box {
+            direction: ltr;
+            text-align: left;
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            font-family: 'Consolas', 'Courier New', monospace;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .keyword {
+            color: #f6ad55;
+        }
+
+        .string {
+            color: #68d391;
+        }
+
+        .comment {
+            color: #a0aec0;
+            font-style: italic;
+        }
+
+        .number {
+            color: #63b3ed;
+        }
+
+        ul {
+            padding-right: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-box {
+            background-color: #ebf8ff;
+            border: 2px dashed var(--secondary-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            font-weight: bold;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .correct {
+            background-color: #c6f6d5;
+            color: #22543d;
+        }
+
+        .incorrect {
+            background-color: #fed7d7;
+            color: #742a2a;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .option-card {
+            background: white;
+            border: 2px solid #cbd5e0;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-color);
+            background-color: #f7fafc;
+        }
+
+        .option-card.selected {
+            border-color: var(--primary-color);
+            background-color: #ebf8ff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>الدرس الثاني: المتغيرات والثوابت في بايثون</h1>
+        <p>مرحباً بك في عالم البرمجة بلغة Python - المهارات الرقمية</p>
+    </header>
+
+    <div class="container">
+
+        <!-- القسم الأول: فتح بيئة التطوير -->
+        <section>
+            <h2>1. فتح بيئة التطوير وتدشين الملفات (IDLE)</h2>
+            <p>لكتابة وتشغيل البرامج بلغة بايثون، نستخدم بيئة التطوير المتكاملة <strong>Python IDLE</strong>[cite: 1]:
+            </p>
+            <ul>
+                <li>اضغط على زر <strong>Start (بدء)</strong>[cite: 1].</li>
+                <li>مَرِّر للأسفل ثم اضغط على مجلد <strong>Python 3.9</strong>[cite: 1].</li>
+                <li>اختر <strong>IDLE (Python 3.9 64-bit)</strong>[cite: 1].</li>
+                <li>لإنشاء ملف برمجي جديد وكتابة الأوامر وحفظها، من قائمة <strong>File</strong> اختر <strong>New
+                        File</strong> (أو اضغط Ctrl + N)[cite: 3].</li>
+            </ul>
+            <div class="code-box">
+                <span class="comment"># مثال لطباعة رسالة ترحيبية</span>
+                <span class="keyword">print</span>(<span class="string">"مرحبا بك في بايثون"</span>)
+            </div>
+        </section>
+
+        <!-- القسم الثاني: المتغيرات وأنواعها -->
+        <section>
+            <h2>2. المتغيرات (Variables)</h2>
+            <p>المتغير هو مكان محجوز في ذاكرة الحاسب لتخزين قيمة قد تتغير أثناء تنفيذ البرنامج[cite: 6]. تنقسم إلى:</p>
+            <ul>
+                <li><strong>الأعداد (Numeric):</strong> مثل الأعداد الصحيحة (Integer) والعشرية (Float).</li>
+                <li><strong>النصوص (String):</strong> سلاسل نصية توضع دائماً بين علامتي تنصيص <code>" "</code>[cite: 6,
+                    8].</li>
+            </ul>
+
+            <h3>شروط تسمية المتغيرات:</h3>
+            <ul>
+                <li>أن تبدأ بحرف أو بشرطة سفلية <code>_</code>[cite: 7].</li>
+                <li>ألا تبدأ برقم أبداً[cite: 7].</li>
+                <li>حالة الحروف الإنجليزية مهمة جداً (مثال: <code>age</code> تختلف عن <code>Age</code>)[cite: 7].</li>
+            </ul>
+
+            <div class="code-box">
+                <span class="comment"># أمثلة على تعيين القيم للمتغيرات</span>
+                score = <span class="number">1200</span>
+                myName = <span class="string">"محمد"</span>
+                total = x + y
+                <span class="keyword">print</span>(<span class="string">"اسمي:"</span>, myName)
+            </div>
+        </section>
+
+        <!-- القسم الثالث: الثوابت -->
+        <section>
+            <h2>3. الثوابت (Constants)</h2>
+            <p>هي متغيرات ذات قيمة ثابتة لا تتغير أثناء تنفيذ البرنامج (مثل قيمة النسبة الثابتة $\pi$ التي تساوي تقريباً
+                3.14)[cite: 9]. وعادة ما يتم استيرادها من مكتبات بايثون الجاهزة[cite: 9]:</p>
+            <div class="code-box">
+                <span class="keyword">from</span> math <span class="keyword">import</span> pi
+                <span class="keyword">print</span>(<span class="string">"قيمة باي:"</span>, pi)
+            </div>
+        </section>
+
+        <!-- القسم الرابع: الأنشطة التفاعلية -->
+        <section>
+            <h2>أنشطة تفاعلية للتدريب</h2>
+
+            <!-- نشاط 1: اختيار اسم المتغير الصحيح -->
+            <div class="activity-box">
+                <h3>نشاط (1): حدد أسماء المتغيرات الصحيحة برمجياً في لغة بايثون</h3>
+                <p>اضغط على الخيارات التي تمثل أسماء متغيرات صحيحة حسب شروط لغة بايثون:</p>
+                <div class="options-grid">
+                    <div class="option-card" onclick="toggleOption(this)" data-valid="true">x</div>
+                    <div class="option-card" onclick="toggleOption(this)" data-valid="false">2AB</div>
+                    <div class="option-card" onclick="toggleOption(this)" data-valid="true">CourseName</div>
+                    <div class="option-card" onclick="toggleOption(this)" data-valid="true">GrAdE</div>
+                    <div class="option-card" onclick="toggleOption(this)" data-valid="false">True</div>
+                </div>
+                <button class="btn" onclick="checkActivity1()">تحقق من الإجابة</button>
+                <div id="feedback1"></div>
+            </div>
+
+            <!-- نشاط 2: كتابة وتوقع ناتج الكود -->
+            <div class="activity-box">
+                <h3>نشاط (2): تدريب على ناتج المقطع البرمجي</h3>
+                <p>إذا كانت لديك الأوامر التالية:</p>
+                <div class="code-box">
+                    x = <span class="number">20</span>
+                    y = <span class="number">30</span>
+                    Total = x + y
+                    <span class="keyword">print</span>(<span class="string">"مجموع x و y يساوي:"</span>, Total)
+                </div>
+                <p>ما هو الناتج الذي سيظهر على الشاشة عند تشغيل هذا المقطع؟</p>
+                <input type="text" id="userAnswer" placeholder="اكتب الناتج هنا..."
+                    style="padding: 0.5rem; width: 60%; font-size: 1rem; border: 1px solid #cbd5e0; border-radius: 4px;">
+                <br>
+                <button class="btn" onclick="checkActivity2()">تحقق من الناتج</button>
+                <div id="feedback2"></div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة - مادة المهارات الرقمية © 2026</p>
+    </footer>
+
+    <script>
+        // تفاعل النشاط الأول
+        function toggleOption(element) {
+            element.classList.toggle('selected');
+        }
+
+        function checkActivity1() {
+            const cards = document.querySelectorAll('.option-card');
+            let correctCount = 0;
+            let totalCorrectCards = 3; // x, CourseName, GrAdE
+            let mistakes = false;
+
+            cards.forEach(card => {
+                const isValid = card.getAttribute('data-valid') === 'true';
+                const isSelected = card.classList.contains('selected');
+                if (isValid && isSelected) {
+                    correctCount++;
+                } else if (!isValid && isSelected) {
+                    mistakes = true;
+                }
+            });
+
+            const feedback = document.getElementById('feedback1');
+            if (correctCount === totalCorrectCards && !mistakes) {
+                feedback.className = 'feedback correct';
+                feedback.innerHTML = 'إجابة صحيحة! أحسنت، اخترت أسماء المتغيرات الصحيحة فقط (تجنبنا الأرقام في البداية والكلمات المحجوزة مثل True).';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.innerHTML = 'إجابة غير دقيقة. تذكر: اسم المتغير لا يبدأ برقم (مثل 2AB)، ولا يصح استخدام الكلمات المحجوزة (مثل True). حاول مرة أخرى!';
+            }
+        }
+
+        // تفاعل النشاط الثاني
+        function checkActivity2() {
+            const userAns = document.getElementById('userAnswer').value.trim();
+            const feedback = document.getElementById('feedback2');
+
+            // الناتج المتوقع يحتوي على مجموع 20 + 30 = 50
+            if (userAns.includes('50')) {
+                feedback.className = 'feedback correct';
+                feedback.innerHTML = 'ممتاز جداً! الناتج الصحيح هو 50، حيث تم جمع المتغيرين x و y وتخزين الناتج في Total وطباعته بنجاح.';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.innerHTML = 'حاول مجدداً. تذكر أن x = 20 و y = 30، وعند جمعهما (Total = x + y) يصبح الناتج 50.';
+            }
+        }
+    </script>
+</body>
+
+</html>
