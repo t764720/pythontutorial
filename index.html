@@ -5,187 +5,389 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الدرس الثاني: المتغيرات والثوابت في بايثون</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2b6cb0;
-            --secondary-color: #3182ce;
-            --accent-color: #ed8936;
-            --bg-color: #f7fafc;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #eff6ff;
+            --secondary: #0ea5e9;
+            --accent: #f59e0b;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --text-color: #2d3748;
-            --code-bg: #1a202c;
-            --code-text: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --code-bg: #0f172a;
+            --code-header: #1e293b;
+            --code-text: #f1f5f9;
+            --success-bg: #ecfdf5;
+            --success-border: #a7f3d0;
+            --success-text: #065f46;
+            --error-bg: #fef2f2;
+            --error-border: #fecaca;
+            --error-text: #991b1b;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 12px 30px -4px rgba(15, 23, 42, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: color 0.2s, background-color 0.2s, border-color 0.2s;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.8;
+            line-height: 1.85;
+            -webkit-font-smoothing: antialiased;
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0284c7 100%);
             color: white;
-            padding: 2rem;
+            padding: 3.5rem 1.5rem 3rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.25);
+        }
+
+        header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2.2rem;
+            margin: 0 0 0.75rem;
+            font-size: 2.35rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.15rem;
+            opacity: 0.95;
+            max-width: 620px;
+            margin: 0 auto;
+            font-weight: 400;
         }
 
         .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 860px;
+            margin: -1.75rem auto 3rem;
+            padding: 0 1.25rem;
+            position: relative;
+            z-index: 10;
         }
 
         section {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
+            border-radius: var(--radius-lg);
+            padding: 2.25rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
         }
 
         h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            color: #1e3a8a;
+            font-size: 1.45rem;
+            font-weight: 700;
             margin-top: 0;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        h2 .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 800;
         }
 
         h3 {
-            color: var(--secondary-color);
+            color: #0369a1;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
         }
 
-        /* Code blocks styling with LTR direction */
+        p {
+            margin: 0 0 1rem;
+            color: #334155;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            padding-right: 1.4rem;
+            margin: 0.75rem 0 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.65rem;
+            color: #334155;
+        }
+
+        code:not(.code-box code) {
+            background: #f1f5f9;
+            color: #0f172a;
+            padding: 0.18rem 0.45rem;
+            border-radius: 6px;
+            font-family: 'Fira Code', Consolas, monospace;
+            font-size: 0.9em;
+            direction: ltr;
+            display: inline-block;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Code Blocks */
         .code-box {
             direction: ltr;
             text-align: left;
             background-color: var(--code-bg);
             color: var(--code-text);
-            font-family: 'Consolas', 'Courier New', monospace;
-            padding: 1rem;
-            border-radius: 8px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            padding: 1.25rem 1.4rem;
+            border-radius: var(--radius-md);
             overflow-x: auto;
-            margin: 1rem 0;
+            margin: 1.25rem 0;
             font-size: 0.95rem;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            line-height: 1.6;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .code-box::before {
+            content: "Python";
+            position: absolute;
+            top: 0.6rem;
+            right: 0.85rem;
+            font-size: 0.7rem;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            background: #1e293b;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
         }
 
         .keyword {
-            color: #f6ad55;
+            color: #f472b6;
+            font-weight: 600;
         }
 
         .string {
-            color: #68d391;
+            color: #34d399;
         }
 
         .comment {
-            color: #a0aec0;
+            color: #94a3b8;
             font-style: italic;
         }
 
         .number {
-            color: #63b3ed;
+            color: #38bdf8;
+            font-weight: 600;
         }
 
-        ul {
-            padding-right: 1.5rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
+        /* Activity Container */
         .activity-box {
-            background-color: #ebf8ff;
-            border: 2px dashed var(--secondary-color);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
+            background-color: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-top: 1.75rem;
         }
 
-        .btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            font-size: 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s;
+        .activity-box:first-of-type {
             margin-top: 0.5rem;
         }
 
+        .activity-box h3 {
+            margin-top: 0;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.6rem;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
         .btn:hover {
-            background-color: var(--secondary-color);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
         }
 
         .feedback {
-            margin-top: 1rem;
-            font-weight: bold;
-            padding: 0.5rem;
-            border-radius: 4px;
+            margin-top: 1.15rem;
+            font-weight: 600;
+            padding: 0.9rem 1.15rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.98rem;
+            line-height: 1.6;
+            animation: fadeIn 0.25s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .correct {
-            background-color: #c6f6d5;
-            color: #22543d;
+            background-color: var(--success-bg);
+            color: var(--success-text);
+            border: 1px solid var(--success-border);
         }
 
         .incorrect {
-            background-color: #fed7d7;
-            color: #742a2a;
+            background-color: var(--error-bg);
+            color: var(--error-text);
+            border: 1px solid var(--error-border);
         }
 
         .options-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0.85rem;
+            margin: 1.25rem 0;
             direction: ltr;
-            text-align: left;
         }
 
         .option-card {
             background: white;
-            border: 2px solid #cbd5e0;
-            padding: 1rem;
-            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            padding: 0.85rem;
+            border-radius: var(--radius-sm);
             cursor: pointer;
             text-align: center;
-            font-family: monospace;
-            font-size: 1.1rem;
-            transition: all 0.2s;
+            font-family: 'Fira Code', monospace;
+            font-size: 1.05rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-sm);
+            user-select: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .option-card:hover {
-            border-color: var(--primary-color);
-            background-color: #f7fafc;
+            border-color: #93c5fd;
+            background-color: #f8fafc;
+            transform: translateY(-2px);
         }
 
         .option-card.selected {
-            border-color: var(--primary-color);
-            background-color: #ebf8ff;
+            border-color: var(--primary);
+            background-color: #eff6ff;
+            color: var(--primary-dark);
+            font-weight: 700;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.75rem;
+            margin: 1.25rem 0 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .input-group input {
+            flex: 1;
+            min-width: 220px;
+            padding: 0.75rem 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
 
         footer {
             text-align: center;
-            padding: 1.5rem;
-            color: #718096;
-            font-size: 0.9rem;
+            padding: 2.5rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 2.5rem 1rem 2.25rem;
+            }
+
+            header h1 {
+                font-size: 1.85rem;
+            }
+
+            section {
+                padding: 1.4rem;
+            }
+
+            .container {
+                margin-top: -1rem;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            .input-group input, .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -193,75 +395,72 @@
 <body>
 
     <header>
+        <span class="badge">المهارات الرقمية</span>
         <h1>الدرس الثاني: المتغيرات والثوابت في بايثون</h1>
-        <p>مرحباً بك في عالم البرمجة بلغة Python - المهارات الرقمية</p>
+        <p>دليل تعليمي وتفاعلي مبسط لفهم كيفية تخزين البيانات والتعامل مع المتغيرات البرمجية</p>
     </header>
 
     <div class="container">
 
         <!-- القسم الأول: فتح بيئة التطوير -->
         <section>
-            <h2>1. فتح بيئة التطوير وتدشين الملفات (IDLE)</h2>
-            <p>لكتابة وتشغيل البرامج بلغة بايثون، نستخدم بيئة التطوير المتكاملة <strong>Python IDLE</strong>[cite: 1]:
-            </p>
+            <h2><span class="section-num">1</span> فتح بيئة التطوير وتدشين الملفات (IDLE)</h2>
+            <p>لكتابة وتشغيل البرامج بلغة بايثون، نستخدم بيئة التطوير المتكاملة <strong>Python IDLE</strong>:</p>
             <ul>
-                <li>اضغط على زر <strong>Start (بدء)</strong>[cite: 1].</li>
-                <li>مَرِّر للأسفل ثم اضغط على مجلد <strong>Python 3.9</strong>[cite: 1].</li>
-                <li>اختر <strong>IDLE (Python 3.9 64-bit)</strong>[cite: 1].</li>
-                <li>لإنشاء ملف برمجي جديد وكتابة الأوامر وحفظها، من قائمة <strong>File</strong> اختر <strong>New
-                        File</strong> (أو اضغط Ctrl + N)[cite: 3].</li>
+                <li>اضغط على زر <strong>Start (بدء)</strong>.</li>
+                <li>مَرِّر للأسفل ثم اضغط على مجلد <strong>Python 3.9</strong>.</li>
+                <li>اختر <strong>IDLE (Python 3.9 64-bit)</strong>.</li>
+                <li>لإنشاء ملف برمجي جديد وكتابة الأوامر وحفظها، من قائمة <strong>File</strong> اختر <strong>New File</strong> (أو اضغط <code>Ctrl + N</code>).</li>
             </ul>
             <div class="code-box">
-                <span class="comment"># مثال لطباعة رسالة ترحيبية</span>
+                <span class="comment"># مثال لطباعة رسالة ترحيبية</span><br>
                 <span class="keyword">print</span>(<span class="string">"مرحبا بك في بايثون"</span>)
             </div>
         </section>
 
         <!-- القسم الثاني: المتغيرات وأنواعها -->
         <section>
-            <h2>2. المتغيرات (Variables)</h2>
-            <p>المتغير هو مكان محجوز في ذاكرة الحاسب لتخزين قيمة قد تتغير أثناء تنفيذ البرنامج[cite: 6]. تنقسم إلى:</p>
+            <h2><span class="section-num">2</span> المتغيرات (Variables)</h2>
+            <p>المتغير هو مكان محجوز في ذاكرة الحاسب لتخزين قيمة قد تتغير أثناء تنفيذ البرنامج. تنقسم المتغيرات إلى أنواع أساسية منها:</p>
             <ul>
                 <li><strong>الأعداد (Numeric):</strong> مثل الأعداد الصحيحة (Integer) والعشرية (Float).</li>
-                <li><strong>النصوص (String):</strong> سلاسل نصية توضع دائماً بين علامتي تنصيص <code>" "</code>[cite: 6,
-                    8].</li>
+                <li><strong>النصوص (String):</strong> سلاسل نصية توضع دائماً بين علامتي تنصيص <code>" "</code>.</li>
             </ul>
 
             <h3>شروط تسمية المتغيرات:</h3>
             <ul>
-                <li>أن تبدأ بحرف أو بشرطة سفلية <code>_</code>[cite: 7].</li>
-                <li>ألا تبدأ برقم أبداً[cite: 7].</li>
-                <li>حالة الحروف الإنجليزية مهمة جداً (مثال: <code>age</code> تختلف عن <code>Age</code>)[cite: 7].</li>
+                <li>أن تبدأ بحرف أو بشرطة سفلية <code>_</code>.</li>
+                <li>ألا تبدأ برقم أبداً.</li>
+                <li>حالة الحروف الإنجليزية مهمة جداً (حساسة لحالة الأحرف، مثال: <code>age</code> تختلف تماماً عن <code>Age</code>).</li>
             </ul>
 
             <div class="code-box">
-                <span class="comment"># أمثلة على تعيين القيم للمتغيرات</span>
-                score = <span class="number">1200</span>
-                myName = <span class="string">"محمد"</span>
-                total = x + y
+                <span class="comment"># أمثلة على تعيين القيم للمتغيرات</span><br>
+                score = <span class="number">1200</span><br>
+                myName = <span class="string">"محمد"</span><br>
+                total = x + y<br>
                 <span class="keyword">print</span>(<span class="string">"اسمي:"</span>, myName)
             </div>
         </section>
 
         <!-- القسم الثالث: الثوابت -->
         <section>
-            <h2>3. الثوابت (Constants)</h2>
-            <p>هي متغيرات ذات قيمة ثابتة لا تتغير أثناء تنفيذ البرنامج (مثل قيمة النسبة الثابتة $\pi$ التي تساوي تقريباً
-                3.14)[cite: 9]. وعادة ما يتم استيرادها من مكتبات بايثون الجاهزة[cite: 9]:</p>
+            <h2><span class="section-num">3</span> الثوابت (Constants)</h2>
+            <p>هي متغيرات ذات قيمة ثابتة لا تتغير أثناء تنفيذ البرنامج (مثل قيمة النسبة الثابتة <code>π</code> التي تساوي تقريباً 3.14). وعادة ما يتم استيرادها من مكتبات بايثون الجاهزة:</p>
             <div class="code-box">
-                <span class="keyword">from</span> math <span class="keyword">import</span> pi
+                <span class="keyword">from</span> math <span class="keyword">import</span> pi<br>
                 <span class="keyword">print</span>(<span class="string">"قيمة باي:"</span>, pi)
             </div>
         </section>
 
         <!-- القسم الرابع: الأنشطة التفاعلية -->
         <section>
-            <h2>أنشطة تفاعلية للتدريب</h2>
+            <h2><span class="section-num">4</span> أنشطة وتطبيقات تفاعلية</h2>
 
             <!-- نشاط 1: اختيار اسم المتغير الصحيح -->
             <div class="activity-box">
-                <h3>نشاط (1): حدد أسماء المتغيرات الصحيحة برمجياً في لغة بايثون</h3>
-                <p>اضغط على الخيارات التي تمثل أسماء متغيرات صحيحة حسب شروط لغة بايثون:</p>
+                <h3>🎯 نشاط (1): حدد أسماء المتغيرات الصحيحة برمجياً في بايثون</h3>
+                <p>اضغط على البطاقات التي تمثل أسماء متغيرات صحيحة ومقبولة برمجياً:</p>
                 <div class="options-grid">
                     <div class="option-card" onclick="toggleOption(this)" data-valid="true">x</div>
                     <div class="option-card" onclick="toggleOption(this)" data-valid="false">2AB</div>
@@ -275,19 +474,19 @@
 
             <!-- نشاط 2: كتابة وتوقع ناتج الكود -->
             <div class="activity-box">
-                <h3>نشاط (2): تدريب على ناتج المقطع البرمجي</h3>
-                <p>إذا كانت لديك الأوامر التالية:</p>
+                <h3>💡 نشاط (2): تدريب على ناتج المقطع البرمجي</h3>
+                <p>تأمل المقطع البرمجي التالي بعناية:</p>
                 <div class="code-box">
-                    x = <span class="number">20</span>
-                    y = <span class="number">30</span>
-                    Total = x + y
+                    x = <span class="number">20</span><br>
+                    y = <span class="number">30</span><br>
+                    Total = x + y<br>
                     <span class="keyword">print</span>(<span class="string">"مجموع x و y يساوي:"</span>, Total)
                 </div>
-                <p>ما هو الناتج الذي سيظهر على الشاشة عند تشغيل هذا المقطع؟</p>
-                <input type="text" id="userAnswer" placeholder="اكتب الناتج هنا..."
-                    style="padding: 0.5rem; width: 60%; font-size: 1rem; border: 1px solid #cbd5e0; border-radius: 4px;">
-                <br>
-                <button class="btn" onclick="checkActivity2()">تحقق من الناتج</button>
+                <p>ما هو الناتج (أو الرقم) الذي سيظهر عند تنفيذ البرنامج؟</p>
+                <div class="input-group">
+                    <input type="text" id="userAnswer" placeholder="اكتب الناتج هنا...">
+                    <button class="btn" onclick="checkActivity2()">تحقق من الناتج</button>
+                </div>
                 <div id="feedback2"></div>
             </div>
 
@@ -324,10 +523,10 @@
             const feedback = document.getElementById('feedback1');
             if (correctCount === totalCorrectCards && !mistakes) {
                 feedback.className = 'feedback correct';
-                feedback.innerHTML = 'إجابة صحيحة! أحسنت، اخترت أسماء المتغيرات الصحيحة فقط (تجنبنا الأرقام في البداية والكلمات المحجوزة مثل True).';
+                feedback.innerHTML = '✨ إجابة صحيحة وممتازة! اخترت أسماء المتغيرات الصحيحة وتجنبت البداية برقم والكلمات المحجوزة.';
             } else {
                 feedback.className = 'feedback incorrect';
-                feedback.innerHTML = 'إجابة غير دقيقة. تذكر: اسم المتغير لا يبدأ برقم (مثل 2AB)، ولا يصح استخدام الكلمات المحجوزة (مثل True). حاول مرة أخرى!';
+                feedback.innerHTML = '⚠️ إجابة غير دقيقة. تذكر: اسم المتغير لا يبدأ برقم (مثل 2AB)، ولا يصح استخدام الكلمات المحجوزة (مثل True). حاول مرة أخرى!';
             }
         }
 
@@ -336,13 +535,12 @@
             const userAns = document.getElementById('userAnswer').value.trim();
             const feedback = document.getElementById('feedback2');
 
-            // الناتج المتوقع يحتوي على مجموع 20 + 30 = 50
             if (userAns.includes('50')) {
                 feedback.className = 'feedback correct';
-                feedback.innerHTML = 'ممتاز جداً! الناتج الصحيح هو 50، حيث تم جمع المتغيرين x و y وتخزين الناتج في Total وطباعته بنجاح.';
+                feedback.innerHTML = '🎉 ممتاز جداً! الناتج الصحيح هو 50، حيث تم جمع المتغيرين x و y وطباعة الناتج.';
             } else {
                 feedback.className = 'feedback incorrect';
-                feedback.innerHTML = 'حاول مجدداً. تذكر أن x = 20 و y = 30، وعند جمعهما (Total = x + y) يصبح الناتج 50.';
+                feedback.innerHTML = '❌ حاول مجدداً. تذكر أن x = 20 و y = 30، وعند جمعهما (Total = x + y) يصبح الناتج 50.';
             }
         }
     </script>
