@@ -366,6 +366,29 @@
             box-shadow: 0 0 0 3px rgba(51, 65, 85, 0.15);
         }
 
+        .code-textarea {
+            width: 100%;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.95rem;
+            direction: ltr;
+            text-align: left;
+            background: #0f172a;
+            color: #f1f5f9;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border: 2px solid #334155;
+            outline: none;
+            resize: vertical;
+            min-height: 110px;
+            box-sizing: border-box;
+            line-height: 1.6;
+        }
+
+        .code-textarea:focus {
+            border-color: #64748b;
+            box-shadow: 0 0 0 3px rgba(51, 65, 85, 0.3);
+        }
+
         footer {
             text-align: center;
             padding: 2.5rem 1rem;
@@ -515,6 +538,17 @@ Total = x + y
             <div id="feedback2"></div>
         </div>
 
+        <!-- نشاط 3: كتابة مقطع برمجي للمتغير والطباعة -->
+        <div class="activity-box">
+            <h3>💻 نشاط (3): كتابة مقطع برمجي في بايثون</h3>
+            <p>اكتب مقطعاً برمجياً لإضافة درجتك في الرياضيات في المتغير <code>myGrade</code>، ثم اطبع درجتك على الشاشة:</p>
+            <textarea class="code-textarea" id="codeAnswer" placeholder="myGrade = 100&#10;print(myGrade)"></textarea>
+            <div style="margin-top: 1rem;">
+                <button class="btn" onclick="checkActivity3()">تشغيل والتحقق من الكود</button>
+            </div>
+            <div id="feedback3"></div>
+        </div>
+
     </section>
 
     </div>
@@ -566,6 +600,33 @@ Total = x + y
             } else {
                 feedback.className = 'feedback incorrect';
                 feedback.innerHTML = '❌ حاول مجدداً. تذكر أن x = 20 و y = 30، وعند جمعهما (Total = x + y) يصبح الناتج 50.';
+            }
+        }
+
+        // تفاعل النشاط الثالث
+        function checkActivity3() {
+            const code = document.getElementById('codeAnswer').value.trim();
+            const feedback = document.getElementById('feedback3');
+
+            // إزالة المسافات الزائدة للتحقق المرن
+            const normalized = code.replace(/\s+/g, ' ');
+
+            // التحقق من تعيين المتغير myGrade وطباعة قيمته
+            const hasAssignment = /myGrade\s*=\s*.+/i.test(code);
+            const hasPrint = /print\s*\(\s*.*myGrade.*\)/i.test(code);
+
+            if (hasAssignment && hasPrint) {
+                feedback.className = 'feedback correct';
+                feedback.innerHTML = '🌟 رائع ومبدع! قمت بتعريف المتغير <code>myGrade</code> وإسناد الدرجة له ثم طباعته بنجاح باستخدام دالة <code>print</code>.';
+            } else if (!hasAssignment && hasPrint) {
+                feedback.className = 'feedback incorrect';
+                feedback.innerHTML = '⚠️ لم يتم العثور على تعيين المتغير <code>myGrade</code> بشكل صحيح. تأكد من كتابة سطر مثل: <br><code>myGrade = 95</code>';
+            } else if (hasAssignment && !hasPrint) {
+                feedback.className = 'feedback incorrect';
+                feedback.innerHTML = '⚠️ قمت بتعيين المتغير ولكن نسيت طباعته على الشاشة! استخدم دالة <code>print(myGrade)</code>.';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.innerHTML = '❌ الكود يحتاج إلى مراجعة. المطلوب كتابة سطرين:<br>1) <code>myGrade = 100</code> (أو أي درجة)<br>2) <code>print(myGrade)</code>';
             }
         }
     </script>
