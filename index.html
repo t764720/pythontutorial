@@ -445,17 +445,16 @@
                 <li>ألا تبدأ برقم أبداً.</li>
                 <li>حالة الحروف الإنجليزية مهمة جداً (حساسة لحالة الأحرف، مثال: <code>age</code> تختلف تماماً عن
                     <code>Age</code>).</li>
-                <li>ألا تكون كلمة محجوزة خاصة بلغة بايثون مثل <code> print</code> أو <code>input</code> وغيرها من
+                <li>ألا تكون كلمة محجوزة خاصة بلغة بايثون مثل <code> print</code> أو <code>input</code> أو <code>True</code> أو <code>False</code> وغيرها من
                     الكلمات...</li>
             </ul>
 
             <div class="code-box"><code><span class="comment"># أمثلة على تعيين القيم للمتغيرات</span>
 score = <span class="number">1200</span>
 myName = <span class="string">"محمد"</span>
-<span class="keyword">print</span>(<span class="string">"اسمي:"</span>, myName)</code>
+<span class="keyword">print</span>(<span class="string">"اسمي:"</span>, myName)
 <span class="keyword">print</span>(<span class="string">"درجتي:"</span>, score)</code></div>
-    </div>
-    </section>
+        </section>
 
     <!-- القسم الثالث: الثوابت -->
     <section>
@@ -466,9 +465,24 @@ myName = <span class="string">"محمد"</span>
 <span class="keyword">print</span>(<span class="string">"قيمة باي:"</span>, pi)</code></div>
     </section>
 
-    <!-- القسم الرابع: الأنشطة التفاعلية -->
+    <!-- القسم الرابع: التعليقات -->
     <section>
-        <h2><span class="section-num">4</span> أنشطة وتطبيقات تفاعلية</h2>
+        <h2><span class="section-num">4</span> التعليقات (Comments)</h2>
+        <p>تُستخدم التعليقات لإضافة تلميحات وشروحات حول التعليمات البرمجية ولا تُعد من خطوات المقطع البرمجي. قد تحتاج إلى مراجعة التعليقات في المستقبل إذا رغبت بإجراء أي تغييرات على برنامجك.</p>
+        <p>يمكنك إضافة ما تريده من تعليقات باستخدام علامة الشباك (<code>#</code>) في بداية العبارة، وسيتجاهلها جهاز الحاسب تماماً ولا ينفذها.</p>
+        
+        <div class="code-box"><code><span class="comment"># ....هذه عبارة عن تعليقات لا ينفذها جهاز الحاسب</span>
+
+<span class="comment"># عين قيمة لاسم المتغير</span>
+name = <span class="string">"محمد"</span>
+
+<span class="comment"># اطبع قيمة المتغير</span>
+<span class="keyword">print</span>(<span class="string">"اسمي:"</span>, name)</code></div>
+    </section>
+
+    <!-- القسم الخامس: الأنشطة التفاعلية -->
+    <section>
+        <h2><span class="section-num">5</span> أنشطة وتطبيقات تفاعلية</h2>
 
         <!-- نشاط 1: اختيار اسم المتغير الصحيح -->
         <div class="activity-box">
